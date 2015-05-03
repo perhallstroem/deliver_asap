@@ -9,7 +9,7 @@ on Heroku, but wants a snappy user experience when sending a signup mail, for ex
 When creating a user you could send an email, without keeping the user who just signed up waiting, by doing:
 
 ```ruby
-AccountMailer.welcome(@user, ...).deliver_asap
+AccountMailer.welcome(@user).deliver_asap
 ```
 
 This assumes an AccountMailer that looks something like this:
