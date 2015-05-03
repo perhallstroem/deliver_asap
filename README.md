@@ -6,8 +6,7 @@ on Heroku, but wants a snappy user experience when sending a signup mail, for ex
 
 ## Usage
 
-When creating a user you could send an email in the background without keeping the user who just signed up waiting by
-doing:
+When creating a user you could send an email, without keeping the user who just signed up waiting, by doing:
 
 ```ruby
 AccountMailer.welcome(@user, ...).deliver_asap
@@ -25,3 +24,10 @@ end
 ```
 
 That is all.
+
+## Technical notes
+
+This gem depends on [Rufus scheduler](https://github.com/jmettraux/rufus-scheduler) to create a 'one-time'
+background job. The scheduler already takes care of limiting the number of running threads, which greatly simplifies
+the implementation of 'deliver_asap'.
+
